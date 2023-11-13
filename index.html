@@ -90,7 +90,7 @@
 
         function onButtonClick()
         {          
-            let messageNumber = inputTextBox.value.replaceAll(" ", "").replaceAll("+", "");
+            let messageNumber = inputTextBox.value.replaceAll(" ", "").replaceAll("+", "").replaceAll("-", "");
             if (messageNumber != "")
             {
                 if(!isNaN(parseFloat(messageNumber)) && isFinite(messageNumber))
