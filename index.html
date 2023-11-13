@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickSendWA</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <style>
+        *
+        {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        label {
+            color: #c4c4c4;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: calc(100% - 40px);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            
+        }
+
+        button {
+            width: 50px;
+            height: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #282828;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .footer-text{
+            color: #7c7c7c;
+            padding: 18px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p style="margin-bottom: 50px">Start WA chat to any number</p>
+        <br>
+        <div class="input-container">
+            <input id="inputTextBox" type="text" placeholder="+91 XXXXX XXXXX">
+            <button id="chatButton" onclick="onButtonClick()">Go</button>
+        </div>
+        <br>
+        <p class="footer-text">Created with ❤️ by <a href="https://github.com/thekaushikls" target="_blank">Kaushik</a></p>
+    </div>
+
+    <script>
+        let inputTextBox = document.getElementById("inputTextBox");
+        let chatButton = document.getElementById("chatButton");
+
+        inputTextBox.addEventListener("keypress", function(args)
+        {
+            if (args.key == "Enter")
+            {
+                chatButton.click();
+            }
+        });
+
+        function onButtonClick()
+        {          
+            let messageNumber = inputTextBox.value.replaceAll(" ", "").replaceAll("+", "");
+            if (messageNumber != "")
+            {
+                if(!isNaN(parseFloat(messageNumber)) && isFinite(messageNumber))
+                {
+                    window.open("https://wa.me/" + messageNumber);
+                }
+                else
+                {
+                    alert("Input can only be number(s).");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
