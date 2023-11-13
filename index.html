@@ -55,16 +55,16 @@
             cursor: pointer;
             text-align: center;
         }
-
+        
         .footer-text{
             color: #7c7c7c;
-            padding: 18px 0;
-            font-size: 14px;
+            font-size: 12px;
         }
+        
     </style>
 </head>
 <body>
-
+    
     <div class="container">
         <p style="margin-bottom: 50px">Start WA chat to any number</p>
         <br>
@@ -73,7 +73,8 @@
             <button id="chatButton" onclick="onButtonClick()">Go</button>
         </div>
         <br>
-        <p class="footer-text">Created with ❤️ by <a href="https://github.com/thekaushikls" target="_blank">Kaushik</a></p>
+        <p class="footer-text">View source on <a href="https://github.com/thekaushikls/QuickSendWA/" target="_blank">GitHub</a></p>
+        <p class="footer-text">Created with ❤️ by <a href="https://linkedin.com/in/thekaushikls" target="_blank">Kaushik</a></p>
     </div>
 
     <script>
@@ -90,7 +91,7 @@
 
         function onButtonClick()
         {          
-            let messageNumber = inputTextBox.value.replaceAll(" ", "").replaceAll("+", "").replaceAll("-", "");
+            let messageNumber = inputTextBox.value.replaceAll(" ", "").replaceAll("+", "");
             if (messageNumber != "")
             {
                 if(!isNaN(parseFloat(messageNumber)) && isFinite(messageNumber))
