@@ -12,7 +12,8 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        body {
+        body
+        {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -20,32 +21,37 @@
             margin: 0;
         }
 
-        .container {
+        .container
+        {
             text-align: center;
         }
 
-        label {
+        label
+        {
             color: #c4c4c4;
             display: block;
             margin-bottom: 8px;
         }
 
-        .input-container {
+        .input-container
+        {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
 
-        input {
+        input
+        {
             width: calc(100% - 40px);
             padding: 15px 20px;
             border-radius: 8px;
             border: 1px solid #ccc;
             margin-right: 10px;
-            
+            color: #282828;
         }
 
-        button {
+        button
+        {
             width: 50px;
             height: 100%;
             padding: 15px;
@@ -57,28 +63,51 @@
             text-align: center;
         }
         
-        .footer-text{
+        .footer-text
+        {
             color: #7c7c7c;
             font-size: 12px;
         }
-
-        .backgroundText
-        {
-            position: absolute;
-            margin-top: -100px;
-            font-size: 100px;        
-            color: #efefef;
-        }
         
+        .dropdown
+        {   
+            appearance: none;
+            text-align: center;
+            padding: 15px 10px;
+            border-radius: 8px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            color: #282828;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
-    
     <div class="container">
-        <p class="backgroundText">TAAK</p>
-        <p style="margin-bottom: 50px">Skip Saving. Start Saying.</p>
+        <p style="margin-bottom: 50px; font-size: 25px;">Say Hi.</p>
         <div class="input-container">
-            <input id="inputTextBox" type="tel" placeholder="+91 XXXXX XXXXX">
+            <select id="country-code-dropdown" class="dropdown">
+                <option value="+1">+1</option>
+                <option value="+7">+7</option>
+                <option value="+27">+27</option>
+                <option value="+33">+33</option>
+                <option value="+34">+34</option>
+                <option value="+39">+39</option>
+                <option value="+44">+44</option>
+                <option value="+49">+49</option>
+                <option value="+52">+52</option>
+                <option value="+54">+54</option>
+                <option value="+55">+55</option>
+                <option value="+61">+61</option>
+                <option value="+62">+62</option>
+                <option value="+81">+81</option>
+                <option value="+82">+82</option>
+                <option value="+86">+86</option>
+                <option value="+90">+90</option>
+                <option value="+91" selected="selected">+91</option>
+                <option value="+234">+234</option>
+            </select>
+            <input id="inputTextBox" type="tel" placeholder="XXXXX XXXXX">
             <button id="chatButton" onclick="onButtonClick()">Go</button>
         </div>
         
@@ -89,7 +118,7 @@
                     <a href="https://ko-fi.com/thekaushikls/" style="color:grey" target="_blank">Ko-Fi</a> &nbsp;|&nbsp;
                     <a href="upi://pay?pa=kaushikls96@okhdfcbank&pn=KAUSHIK&cu=INR" style="color:grey" target="_blank">UPI</a> &nbsp;|&nbsp;
                     <a href="https://www.github.com/thekaushikls/TAAK/" style="color:grey" target="_blank">GitHub</a>
-                    <p>Version 1.3.7</p>
+                    <p>Version 1.4.0</p>
                 </div>          
             </p>
         </div>
@@ -98,6 +127,7 @@
     <script>
         let inputTextBox = document.getElementById("inputTextBox");
         let chatButton = document.getElementById("chatButton");
+        let countryCode = document.getElementById("country-code-dropdown")
 
         inputTextBox.addEventListener("keypress", function(args)
         {
@@ -109,12 +139,13 @@
 
         function onButtonClick()
         {          
-            let messageNumber = inputTextBox.value.replaceAll(" ", "").replaceAll("+", "");
+            let messageNumber = inputTextBox.value.replaceAll(" ", "").replaceAll("+", "");            
             if (messageNumber != "")
             {
                 if(!isNaN(parseFloat(messageNumber)) && isFinite(messageNumber))
                 {
-                    window.open("https://wa.me/" + messageNumber);
+                    window.open("https://wa.me/" + countryCode.value.replaceAll("+", "") + messageNumber);
+                    
                 }
                 else
                 {
