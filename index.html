@@ -6,6 +6,7 @@
     <title>WhatsApp</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
     <style>
         *
         {
@@ -83,6 +84,22 @@
     </style>
 </head>
 <body>
+    <!-- HANDLING CAPTCHA STARTS HERE-->
+    <script>
+        window.onloadTurnstileCallback = function () {
+            turnstile.render("#captchaWidget", {
+                sitekey: "0x4AAAAAAA8ODEqcQXX-DmQi",
+                callback: function (token) {
+                console.log(`Challenge Success ${token}`);
+                },
+            });
+        };
+    </script>
+    <div id=""captchaWidget>
+
+    </div>
+    <!-- HANDLING CAPTCHA ENDS HERE-->
+    
     <div class="container">
         <p style="margin-bottom: 50px; font-size: 25px;">Say Hi.</p>
         <div class="input-container">
